@@ -13,13 +13,16 @@
 </head>
 <body>
   <a class="skip-link" href="#main">本文へ移動</a>
+  <div class="loading-screen" aria-hidden="true">
+    <p class="loading-screen__title">Studio Komorebi</p>
+  </div>
 
   <header class="site-header">
     <div class="site-header__inner">
       <a class="site-logo" href="#" aria-label="Studio Komorebi ホーム">Studio Komorebi</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">
         <span class="nav-toggle__line"></span>
-        <span class="nav-toggle__label">メニュー</span>
+        <span class="nav-toggle__label visually-hidden">メニュー</span>
       </button>
       <nav id="global-nav" class="global-nav" aria-label="グローバルナビゲーション">
         <ul class="global-nav__list">
@@ -55,14 +58,11 @@
     </section>
 
     <section class="section section--intro" aria-labelledby="intro-title">
-      <div class="container intro-grid">
-        <div>
-          <p class="section-kicker">Concept</p>
-          <h2 id="intro-title">写真が苦手な人にも、居心地のよい撮影を。</h2>
-        </div>
+      <div class="container">
+        <p class="section-kicker">Concept</p>
+        <h2 id="intro-title">写真が苦手な人にも、居心地のよい撮影を。</h2>
         <div class="intro-grid__body">
-          <p>Studio Komorebiでは、撮られることに慣れていない方や、小さなお子さま連れのご家族にも安心していただけるよう、撮影前のヒアリングを大切にしています。</p>
-          <p>ポーズを細かく決めすぎず、会話や休憩を挟みながら、その人らしい表情が出るタイミングを一緒に探します。</p>
+          <p>Studio Komorebiでは、撮られることに慣れていない方や、小さなお子さま連れのご家族にも安心していただけるよう、撮影前のヒアリングを大切にしています。<br>ポーズを細かく決めすぎず、会話や休憩を挟みながら、その人らしい表情が出るタイミングを一緒に探します。</p>
         </div>
       </div>
     </section>
@@ -241,18 +241,54 @@
 
     <section id="reserve" class="section reserve-section" aria-labelledby="reserve-title">
       <div class="container reserve-panel">
-        <div>
+        <div class="reserve-panel__intro">
           <p class="section-kicker">Reserve</p>
           <h2 id="reserve-title">まずは希望日と撮りたい内容をお聞かせください。</h2>
           <p>空き状況、撮影内容、料金の目安を確認して、1営業日以内に返信します。</p>
         </div>
-        <div class="reserve-panel__actions">
-          <a class="button button--primary" href="mailto:hello@example.com?subject=撮影予約の相談&body=希望日:%0D%0A撮影内容:%0D%0A人数:%0D%0Aご相談内容:">メールで予約相談する</a>
-          <a class="button button--secondary" href="tel:0300000000">03-0000-0000</a>
-        </div>
+        <form class="reserve-form" action="mailto:hello@example.com" method="post" enctype="text/plain">
+          <div class="reserve-form__grid">
+            <div class="form-field">
+              <label for="reserve-name">お名前 <span>必須</span></label>
+              <input id="reserve-name" name="お名前" type="text" autocomplete="name" required>
+            </div>
+            <div class="form-field">
+              <label for="reserve-email">メールアドレス <span>必須</span></label>
+              <input id="reserve-email" name="メールアドレス" type="email" autocomplete="email" required>
+            </div>
+            <div class="form-field">
+              <label for="reserve-date">希望日</label>
+              <input id="reserve-date" name="希望日" type="text" inputmode="text" placeholder="例: 6月15日 午前">
+            </div>
+            <div class="form-field">
+              <label for="reserve-menu">撮影内容</label>
+              <select id="reserve-menu" name="撮影内容">
+                <option value="">選択してください</option>
+                <option value="家族写真">家族写真</option>
+                <option value="プロフィール写真">プロフィール写真</option>
+                <option value="記念日フォト">記念日フォト</option>
+                <option value="その他">その他</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="reserve-message">ご相談内容 <span>必須</span></label>
+            <textarea id="reserve-message" name="ご相談内容" rows="6" required></textarea>
+          </div>
+          <button class="button button--primary" type="submit">メールフォームを送信する</button>
+        </form>
+        <section class="reserve-contact" aria-labelledby="reserve-contact-title">
+          <h3 id="reserve-contact-title">電話でのお問い合わせはこちら</h3>
+          <p>お急ぎの場合や、フォーム入力が難しい場合は営業時間内にお電話ください。</p>
+          <a href="tel:0300000000">03-0000-0000</a>
+        </section>
       </div>
     </section>
   </main>
+
+  <button class="back-to-top" type="button" aria-label="ページ上部へ戻る">
+    <span aria-hidden="true">↑</span>
+  </button>
 
   <footer class="site-footer">
     <div class="container site-footer__inner">
