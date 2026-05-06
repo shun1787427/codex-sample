@@ -33,7 +33,15 @@
 
 ```css
 :root {
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /*
+   * Font policy:
+   * - Japanese: Noto Sans JP
+   * - Latin / numbers: Inter
+   * - Fallback: system fonts
+   */
+  --font-sans: "Inter", "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-ja: "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-latin: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -113,3 +121,8 @@
 - 角丸と影は定義済みトークンから選ぶ
 - 似た値を都度追加しない
 - 新しいトークンを追加する場合は用途を明確にする
+- 日本語は原則 `Noto Sans JP` を使う
+- 英数字・数値・UIラベルは原則 `Inter` を使う
+- 新しいWebフォントを追加する場合は、用途と読み込みコストを明記する
+- Google Fontsを使う場合は、`Inter` は 400 / 500 / 600 / 700、`Noto Sans JP` は 400 / 500 / 700 を基本とする
+- Webフォントを使わない案件では、`--font-sans` のフォールバック指定を維持する
